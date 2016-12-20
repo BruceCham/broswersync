@@ -6,9 +6,12 @@ var sass = require('gulp-sass');
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
         server: {
+        	// 指定静态目录
         	baseDir: "./app",
+        	// 自动打开指定的文件
         	index: "home.html"
         },
+        // 指定服务器端口
         port: 8082
     });
 
