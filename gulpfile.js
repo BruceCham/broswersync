@@ -4,9 +4,12 @@ var sass = require('gulp-sass');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
-
     browserSync.init({
-        server: "./app"
+        server: {
+        	baseDir: "./app",
+        	index: "home.html"
+        },
+        port: 8082
     });
 
     gulp.watch("app/scss/*.scss", ['sass']);
