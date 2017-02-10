@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
-
+var connect = require('gulp-connect');
 // 方法1 通过browser启动静态服务器
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
@@ -31,7 +31,12 @@ gulp.task('serve', ['sass'], function() {
 //         proxy: 'http://localhost:8090',
 //         port: 3001
 //     });
-//     gulp.watch("**/*.html").on('change', browserSync.reload);
+//     gulp.watch("app/scss/*.scss").on('change',function(e){
+//         return gulp.src("app/scss/*.scss")
+//             .pipe(sass())
+//             .pipe(gulp.dest("app/css"))
+//             .pipe(browserSync.stream());
+//     });
 // });
 
 
@@ -44,4 +49,3 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['serve']);
